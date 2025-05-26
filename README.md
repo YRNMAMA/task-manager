@@ -1,7 +1,3 @@
-Ecco la tua documentazione con le emoji aggiunte in modo coerente e coinvolgente, per migliorare la leggibilità e rendere il tutto più piacevole:
-
----
-
 # 🗂️ Documentazione del Task Manager
 
 ## 📌 Introduzione
