@@ -1,3 +1,4 @@
+
 # ⏱️ Documentazione del Cronometro Avanzato
 
 Il **Cronometro Avanzato** è un'applicazione web che offre funzionalità complete per la misurazione del tempo con la possibilità di registrare giri parziali, salvare sessioni e analizzare le prestazioni.
