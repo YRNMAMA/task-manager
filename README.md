@@ -1,134 +1,140 @@
-# 🗂️ Documentazione del Task Manager
+# ⏱️ Documentazione del Cronometro Avanzato
 
-## 📌 Introduzione
+Il **Cronometro Avanzato** è un'applicazione web che offre funzionalità complete per la misurazione del tempo con la possibilità di registrare giri parziali, salvare sessioni e analizzare le prestazioni.
 
-Il **Task Manager** è un'applicazione web che permette di gestire attività (task) con diverse priorità, stati e date di scadenza 📅. L'applicazione salva i dati localmente nel browser utilizzando il **LocalStorage** 💾, permettendo agli utenti di mantenere i propri task tra diverse sessioni.
+## 🚀 Caratteristiche principali
 
-## 🚀 Funzionalità principali
+### ⚙️ Funzionalità base
 
-### 1️⃣ Aggiunta di nuovi task
+* ▶️ **Avvio/Arresto**: Misurazione del tempo con precisione al centesimo di secondo
+* 🔁 **Reset**: Azzeramento completo del cronometro
+* 🏁 **Giri**: Registrazione di tempi parziali durante la misurazione
 
-* 📝 **Nome del task**: Campo obbligatorio
-* 🔽 **Priorità**: Selezione tra Bassa, Media (default) e Alta
-* ⏰ **Scadenza**: Data opzionale per la scadenza del task
+### 💡 Funzionalità avanzate
 
-### 2️⃣ Gestione dei task
-
-* ✏️ **Modifica**: Possibilità di modificare il nome di un task esistente
-* 🗑️ **Eliminazione**: Rimozione permanente di un task
-* 🔄 **Cambio stato**: Toggle tra "Da fare" 🟡 e "Completato" ✅
-
-### 3️⃣ Filtri e ordinamento
-
-* 🔍 **Filtro per stato**: Visualizza tutti i task, solo quelli da fare o solo quelli completati
-* 🧠 **Ricerca**: Cerca task per nome
-* 📊 **Ordinamento**: Ordina per priorità o per data di scadenza
-
-### 4️⃣ Persistenza dei dati
-
-* 💾 Salvataggio automatico nel LocalStorage del browser
-* ♻️ Recupero dei task al caricamento della pagina
+* 💾 **Salvataggio sessioni**: Memorizzazione permanente delle sessioni cronometrate
+* 📊 **Analisi giri**: Identificazione automatica del giro più veloce e più lento
+* ⌨️ **Tasti rapidi**: Controllo da tastiera per un uso più efficiente
+* 📱 **Responsive design**: Adattamento a diverse dimensioni dello schermo
 
 ## 🧱 Struttura del codice
 
-### 🧾 HTML
+### 1. 📝 HTML (`index.html`)
 
-L'interfaccia è composta da:
+Contiene la struttura base dell'applicazione con:
 
-1. ➕ Un form per l’aggiunta di nuovi task
-2. 🎛️ Controlli per filtrare, cercare e ordinare i task
-3. 📋 Un contenitore per la visualizzazione dei task
+* Display principale del tempo
+* Pulsanti di controllo
+* Aree per visualizzare giri e sessioni salvate
 
-### 🎨 CSS
+### 2. 🎨 CSS (`styles.css`)
 
-Lo stile è definito con variabili CSS per una facile personalizzazione e include:
+Organizzato in sezioni:
 
-* 📱 Design responsive che si adatta a diverse dimensioni dello schermo
-* 🏷️ Indicatori visivi per priorità e stato dei task
-* ✨ Transizioni ed effetti *hover* per migliorare l’esperienza utente
+* 🎛️ **Variabili globali**: Per colori e stili comuni
+* 🧭 **Layout generale**: Struttura della pagina
+* 🧩 **Stili dei componenti**: Pulsanti, liste, display
+* 📐 **Media queries**: Per la responsività
 
-### 📜 JavaScript
+### 3. 🧠 JavaScript (`script.js`)
 
-La logica dell’applicazione gestisce:
+Suddiviso in:
 
-1. 📚 L’array `taskList` che contiene tutti i task
-2. 🛠️ Le funzioni per aggiungere, modificare e rimuovere task
-3. 💾 Il salvataggio e il recupero dei dati dal LocalStorage
-4. 🖼️ La renderizzazione dei task in base a filtri e ordinamenti
+* 🧮 **Gestione dello stato**: Variabili del cronometro
+* 🔄 **Funzioni principali**: Logica del cronometro
+* 🖥️ **Funzioni di rendering**: Aggiornamento dell’interfaccia
+* 🧲 **Gestione eventi**: Listener e tasti rapidi
 
-## 🧭 Guide all'uso
+## 📚 API e Funzioni principali
 
-### ➕ Aggiungere un nuovo task
+### ⏰ Funzioni del cronometro
 
-1. ✍️ Compilare il campo "Nuovo Task" con il nome dell’attività
-2. 🔽 Selezionare una priorità (default: Media)
-3. 📆 Opzionalmente, selezionare una data di scadenza
-4. ✅ Cliccare "Aggiungi Task"
+| ⚙️ Funzione    | 📄 Descrizione                              |
+| -------------- | ------------------------------------------- |
+| `startTimer()` | Avvia il cronometro                         |
+| `stopTimer()`  | Ferma il cronometro                         |
+| `resetTimer()` | Resetta completamente il cronometro         |
+| `lapTimer()`   | Registra un giro parziale                   |
+| `saveTime()`   | Salva la sessione corrente con tutti i giri |
 
-### ✏️ Modificare un task
+### 🧰 Funzioni di supporto
 
-1. 🖱️ Cliccare il pulsante "Modifica" sul task desiderato
-2. ⌨️ Inserire il nuovo nome nella finestra di dialogo
-3. ✔️ Confermare con "OK"
+| ⚙️ Funzione            | 📄 Descrizione                                                         |
+| ---------------------- | ---------------------------------------------------------------------- |
+| `formatTime(time)`     | Formatta il tempo in `hh:mm:ss.cc`                                     |
+| `renderLaps()`         | Visualizza tutti i giri con evidenziazione del più veloce/lento        |
+| `renderSavedTimes()`   | Mostra la lista delle sessioni salvate                                 |
+| `updateButtonStates()` | Gestisce lo stato dei pulsanti in base al funzionamento del cronometro |
 
-### 🔁 Cambiare stato di un task
+## ⌨️ Tasti rapidi
 
-* ✅ Cliccare "Completa" per marcare un task come completato
-* ↩️ Cliccare "Annulla" per riportare un task completato a "Da fare"
+| 🖱️ Tasto | ⌛ Funzione                                |
+| --------- | ----------------------------------------- |
+| Spazio    | Avvia/Ferma il cronometro                 |
+| `L`       | Registra un giro (durante la misurazione) |
+| `R`       | Resetta il cronometro (quando fermo)      |
 
-### 🧮 Filtrare i task
+## 💽 Persistenza dei dati
 
-* 🧲 Usare il menu a tendina "Filtra per Stato" per visualizzare solo task completati o da fare
+L'applicazione utilizza il `localStorage` del browser per salvare:
 
-### 🔎 Cercare task
+* 📅 Tutte le sessioni cronometrate complete di:
 
-* ⌨️ Digitare nel campo "Cerca Task" per filtrare i task per nome
+  * Data e ora della sessione
+  * Tempo totale
+  * Tutti i giri registrati
 
-### 📑 Ordinare i task
-
-* 🔀 Selezionare un’opzione dal menu "Ordina per" per ordinare i task per priorità o data di scadenza
+I dati persistono tra diversi accessi all'applicazione.
 
 ## 🎨 Personalizzazione
 
-Per personalizzare l’aspetto dell’applicazione, modificare le variabili CSS nella sezione `:root`:
+È possibile personalizzare l’aspetto modificando le variabili CSS nella sezione `:root`:
 
 ```css
 :root {
-  --primary-color: #4361ee;       /* 🎨 Colore principale */
-  --secondary-color: #3f37c9;     /* 🎨 Colore secondario */
-  --success-color: #4cc9f0;       /* ✅ Colore per azioni positive */
-  --danger-color: #f72585;        /* ❌ Colore per azioni pericolose */
-  --warning-color: #f8961e;       /* ⚠️ Colore per avvisi */
-  --light-color: #f8f9fa;         /* 💡 Colore di sfondo chiaro */
-  --dark-color: #212529;          /* 🖤 Colore del testo */
-  --gray-color: #6c757d;          /* ⚙️ Colore del testo secondario */
-  --border-radius: 8px;           /* 🟦 Arrotondamento dei bordi */
-  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 🌫️ Ombre */
-  --transition: all 0.3s ease;    /* 🎞️ Transizioni animate */
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --success-color: #4cc9f0;
+    --danger-color: #f72585;
+    /* Altre variabili... */
 }
 ```
 
+## 🌐 Browser supportati
+
+Compatibile con tutti i browser moderni:
+
+* 🟢 Chrome (ultime 3 versioni)
+* 🟠 Firefox (ultime 3 versioni)
+* 🔵 Safari (ultime 3 versioni)
+* 🟣 Edge (ultime 3 versioni)
+
 ## ⚠️ Limitazioni note
 
-* 📍 I dati sono salvati solo nel browser corrente
-* 🔒 Non è possibile modificare priorità o data di scadenza dopo la creazione (solo il nome)
-* 🏷️ Non c’è supporto per categorie o etichette aggiuntive
+1. I dati sono salvati solo nel browser corrente
+2. Precisione limitata a centesimi di secondo
+3. Numero massimo di giri visualizzati: 1000 (limite pratico)
 
-## 💡 Possibili miglioramenti futuri
+## 🔮 Possibili miglioramenti futuri
 
-1. ✏️ Aggiungere la modifica di priorità e scadenza
-2. 🗂️ Implementare categorie o progetti per organizzare i task
-3. ☁️ Aggiungere la sincronizzazione con un backend
-4. 🔔 Implementare notifiche per task in scadenza
-5. 📎 Aggiungere la possibilità di allegare note o file ai task
+1. 🔗 Sincronizzazione con un backend remoto
+2. 📤 Esportazione dati in formato CSV/JSON
+3. 📩 Funzionalità di condivisione sessioni
+4. 📈 Grafici delle prestazioni nel tempo
+5. 🌍 Supporto multi-lingua
 
-## 🖥️ Requisiti di sistema
+## 🛠️ Installazione
 
-* 🌐 Browser moderno con supporto a JavaScript e LocalStorage
-* 🧰 Nessun requisito particolare di sistema operativo
+Non è richiesta alcuna installazione particolare. Basta:
 
-## 🪪 Licenza
+1. 📥 Scaricare i tre file (`index.html`, `styles.css`, `script.js`)
+2. 📁 Posizionarli nella stessa cartella
+3. 🌐 Aprire `index.html` con un browser web
 
-Questo progetto è rilasciato come software **open-source** senza alcuna licenza specifica.
+## 📄 Licenza
+
+Questo progetto è rilasciato sotto **licenza MIT**.
 È possibile utilizzarlo, modificarlo e distribuirlo liberamente.
-Ma se volete offrirmi un kebab… ci sono 😎🥙😂
+Ma se ti ha salvato una gara... almeno un gelato 🍦 offrimelo 😄
+
+---
