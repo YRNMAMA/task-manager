@@ -132,7 +132,3 @@ Per personalizzare l’aspetto dell’applicazione, modificare le variabili CSS 
 Questo progetto è rilasciato come software **open-source** senza alcuna licenza specifica.
 È possibile utilizzarlo, modificarlo e distribuirlo liberamente.
 Ma se volete offrirmi un kebab… ci sono 😎🥙😂
-
----
-
-Fammi sapere se vuoi una versione markdown, PDF, o se vuoi anche un logo con emoji!
